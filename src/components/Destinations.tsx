@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Leaf, Palette } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import florenceImg from '../assets/images/florence-1504.png';
+import cretaceImg from '../assets/images/cretace.png';
+import parisImg from '../assets/images/paris-1889.png';
 
-const destinations = [
+export const destinations = [
   {
     id: 'paris-1889',
     title: 'Paris 1889',
@@ -10,6 +14,7 @@ const destinations = [
     icon: Sparkles,
     gradient: 'from-amber-900 to-charcoal-dark',
     accentColor: 'text-amber-400',
+    image: parisImg,
   },
   {
     id: 'cretace',
@@ -19,6 +24,7 @@ const destinations = [
     icon: Leaf,
     gradient: 'from-emerald-900 to-charcoal-dark',
     accentColor: 'text-emerald-400',
+    image: cretaceImg,
   },
   {
     id: 'florence-1504',
@@ -28,6 +34,7 @@ const destinations = [
     icon: Palette,
     gradient: 'from-rose-900 to-charcoal-dark',
     accentColor: 'text-rose-400',
+    image: florenceImg,
   },
 ];
 
@@ -91,18 +98,16 @@ export default function Destinations() {
                   {destination.description}
                 </p>
 
-                <motion.button
-                  whileHover={{ x: 5 }}
+                {/* Link to the destination page */}
+                <Link
+                  to={`/destination/${destination.id}`}
                   className="font-sans text-gold flex items-center gap-2 text-sm font-semibold tracking-wide group/btn"
                 >
                   Découvrir
-                  <motion.span
-                    initial={{ x: 0 }}
-                    className="group-hover/btn:translate-x-2 transition-transform"
-                  >
+                  <span className="group-hover/btn:translate-x-2 transition-transform">
                     →
-                  </motion.span>
-                </motion.button>
+                  </span>
+                </Link>
 
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gold opacity-0 group-hover:opacity-10 rounded-full blur-3xl transition-opacity duration-500" />
               </div>
